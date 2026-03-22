@@ -61,10 +61,6 @@ open WhatsApp
 Mercury
 play Saiyaara
 Mercury
-message Rishabh I love u
-Mercury
-message Rishabh I love you
-Mercury
 message Aman you are gay
 Mercury
 message Aman you are gay

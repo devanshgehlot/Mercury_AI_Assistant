@@ -9,7 +9,6 @@ import time
 
 rcn=sr.Recognizer()
 sk=pyttsx3.init()
-a=1
 
 def speak(t):
     sk.say(t)
@@ -69,15 +68,17 @@ if __name__=="__main__":
     speak("hello sir")
     while True:
         try:
-            with sr.Microphone() as source:   
+            with sr.Microphone() as source: 
+                rcn.adjust_for_ambient_noise(source)  
                 print("Listening...")
-                audio = rcn.listen(source, timeout=3, phrase_time_limit=1)
+                audio = rcn.listen(source, timeout=3)
             word = rcn.recognize_google(audio)
             words=word.lower().split()
             
             if "mercury" in words:
                 sk.say("yes sir")
                 with sr.Microphone() as source:
+                    rcn.adjust_for_ambient_noise(source)
                     print("Mercury Active...")
                     audio = rcn.listen(source)
                     com = rcn.recognize_google(audio)  
@@ -107,6 +108,3 @@ if __name__=="__main__":
 
         except Exception as e:
             pass
-
-        finally:
-            speak("thank you")
